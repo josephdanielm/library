@@ -32,8 +32,87 @@ img {
     height: auto;
 }
 
-body {
-    font-family: 'Figtree', sans-serif;
+/*  */
+
+:root {
+    /* Reef */
+    --reef: #C4FDB8;
+
+    --reef-light-1: #BEFFB2;
+    --reef-light-2: #D0FFC4;
+    --reef-light-3: #E2FFD6;
+
+    --reef-dark-1: #B2FBAA;
+    --reef-dark-2: #A0FA9A;
+    --reef-dark-3: #8EFA88;
+    --reef-dark-4: #7CF878;
+    --reef-dark-5: #6AF766;
+
+    /* Rhino */
+    --rhino: #333366;
+
+    --rhino-light-1: #343366;
+    --rhino-light-2: #4D4D80;
+    --rhino-light-3: #666699;
+
+    --rhino-dark-1: #2A2A59;
+    --rhino-dark-2: #21214D;
+    --rhino-dark-3: #181841;
+    --rhino-dark-4: #0F0F34;
+    --rhino-dark-5: #060627;
 }
 
-/*  */
+body {
+    font-family: 'Figtree', sans-serif;
+    background-color: var(--rhino-dark-3);
+}
+
+.wrapper {
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr auto;
+}
+
+/* Header */
+
+.header {
+    background-color: var(--rhino-dark-1);
+    text-align: center;
+    padding: 0.5rem 0 0.5rem 0;
+}
+
+h1 {
+    font-size: 5rem;
+    color: var(--reef);
+    font-weight: 500;
+}
+
+/* Library */
+
+.library-container {
+    padding: 2rem 1rem 1rem 2rem;
+    display: grid;
+    grid-template-columns: 40rem auto;
+    column-gap: 1rem;
+}
+
+.action-panel {
+    border: 2px solid var(--reef);
+}
+
+.library-grid {
+    border: 2px solid var(--reef);
+    display: grid;
+}
+
+
+/* Footer */
+
+.footer {
+    background-color: var(--rhino-dark-1);
+    font-size: 2rem;
+    text-align: center;
+    color: var(--reef);
+    padding: 0.5rem;
+}
