@@ -205,6 +205,29 @@ body {
 }
 
 
+/* Scrollbar */
+
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--reef) var(--reef);
+}
+
+/* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+    width: 14px;
+}
+
+*::-webkit-scrollbar-track {
+    background: var(--rhino-dark-3);
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: var(--reef);
+    border-radius: 20px;
+    border: 3px solid var(--rhino-dark-3);
+}
+
+
 
 
 /* Footer */
