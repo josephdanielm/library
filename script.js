@@ -37,6 +37,9 @@ console.table(myLibrary);
 const library = document.querySelector('.library-grid');
 
 function displayBooks() {
+
+    while (library.firstChild && library.removeChild(library.firstChild));
+
     myLibrary.forEach((ele) => {
         const book = document.createElement('div');
 
@@ -64,3 +67,18 @@ function displayBooks() {
 // Test 
 displayBooks();
 // Test
+
+const form = document.querySelector('form');
+
+form.addEventListener('submit', function (event) {
+    event.preventDefault();
+
+    const title = document.getElementById('book-title').value
+        , author = document.getElementById('book-author').value
+        , pages = document.getElementById('book-pages').value
+        , haveRead = document.querySelector('input[name="book-read"]:checked').value;
+
+    addBookToLibrary(title, author, pages, haveRead);
+    displayBooks();
+    form.reset();
+})
