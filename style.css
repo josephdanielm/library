@@ -227,7 +227,19 @@ body {
     border: 3px solid var(--rhino-dark-3);
 }
 
+/* Form */
 
+form label {
+    font-size: 2rem;
+    font-weight: 500;
+    color: var(--reef);
+}
+
+.radio-question {
+    font-size: 2rem;
+    font-weight: 500;
+    color: var(--reef);
+}
 
 
 /* Footer */
