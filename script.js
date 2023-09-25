@@ -16,6 +16,7 @@ function Book(title, author, pages, haveRead) {
 function addBookToLibrary(title, author, pages, haveRead) {
 
     const newBook = new Book(title, author, pages, haveRead);
+
     myLibrary.push(newBook);
 }
 
@@ -44,7 +45,7 @@ function displayBooks() {
         const book = document.createElement('div');
 
         book.innerHTML = `
-        <div class="card">
+        <div class="card" data-index="${myLibrary.indexOf(ele)}">
             <h1>${ele.title}</h1>
             <h2>${ele.author}</h2>
             <p>${ele.pages} pages</p>
@@ -55,7 +56,7 @@ function displayBooks() {
                         <div></div>
                     </label>
                 </div>
-                <img class="delete-button" src="./assets/delete.svg">
+                <img class="delete-button" data-index="${myLibrary.indexOf(ele)}" src="./assets/delete.svg">
             </span>
         </div>
         `;
@@ -81,4 +82,15 @@ form.addEventListener('submit', function (event) {
     addBookToLibrary(title, author, pages, haveRead);
     displayBooks();
     form.reset();
+})
+
+
+library.addEventListener('click', function (event) {
+    if (event.target.classList.contains('delete-button')) {
+        let result = confirm('Are you sure?');
+        if (result) {
+            myLibrary.splice(event.target.dataset.index, 1);
+            displayBooks();
+        }
+    }
 })
