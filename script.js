@@ -5,7 +5,7 @@ function Book(title, author, pages, haveRead) {
     this.title = title;
     this.author = author;
     this.pages = pages;
-    this.haveRead = (Boolean(haveRead)) ? 'already read' : 'not read yet';
+    this.haveRead = Boolean(haveRead);
 
     this.info = function () {
         return `${title} by ${author}, ${pages} pages, ${this.haveRead}`;
@@ -32,7 +32,6 @@ addBookToLibrary('Harry Potter and the Sorcerer\'s Stone', 'J.K. Rowling', 336, 
 addBookToLibrary('Brave New World', 'Aldous Huxley', 311, true);
 addBookToLibrary('The Hunger Games', 'Suzanne Collins', 374, false);
 addBookToLibrary('The Da Vinci Code', 'Dan Brown', 454, true);
-console.table(myLibrary);
 // Test
 
 const library = document.querySelector('.library-grid');
@@ -44,15 +43,26 @@ function displayBooks() {
     myLibrary.forEach((ele) => {
         const book = document.createElement('div');
 
+        let readCheck
+            , readStatus;
+
+        if (ele.haveRead) {
+            readCheck = 'checked';
+            readStatus = 'read'
+        } else {
+            readCheck = '';
+            readStatus = '';
+        }
+
         book.innerHTML = `
-        <div class="card" data-index="${myLibrary.indexOf(ele)}">
+        <div class="card ${readStatus}">
             <h1>${ele.title}</h1>
             <h2>${ele.author}</h2>
             <p>${ele.pages} pages</p>
             <span class="card-actions">
                 <div class="switch-container">
                     <label class="read-switch">
-                    <input class="read-input" type="checkbox" />
+                    <input class="read-input" data-index="${myLibrary.indexOf(ele)}" type="checkbox" ${readCheck} />
                         <div></div>
                     </label>
                 </div>
@@ -72,6 +82,7 @@ displayBooks();
 const form = document.querySelector('form');
 
 form.addEventListener('submit', function (event) {
+
     event.preventDefault();
 
     const title = document.getElementById('book-title').value
@@ -92,5 +103,20 @@ library.addEventListener('click', function (event) {
             myLibrary.splice(event.target.dataset.index, 1);
             displayBooks();
         }
+    }
+})
+
+Book.prototype.toggleReadStatus = function () {
+    this.haveRead = this.haveRead === true ? false : true;
+}
+
+
+library.addEventListener('click', function (event) {
+    if (event.target.classList.contains('read-input')) {
+
+        let index = event.target.dataset.index;
+        myLibrary[index].toggleReadStatus();
+
+        displayBooks();
     }
 })
