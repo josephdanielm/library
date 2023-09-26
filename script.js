@@ -48,17 +48,20 @@ function displayBooks() {
 
         if (ele.haveRead) {
             readCheck = 'checked';
-            readStatus = 'read'
+            readStatus = 'read';
+            readText = 'Read';
         } else {
             readCheck = '';
             readStatus = '';
+            readText = 'Unread'
         }
 
         book.innerHTML = `
         <div class="card ${readStatus}">
             <h1>${ele.title}</h1>
             <h2>${ele.author}</h2>
-            <p>${ele.pages} pages</p>
+            <p class="page-text">${ele.pages} pages</p>
+            <p class="read-text">${readText}</p>
             <span class="card-actions">
                 <div class="switch-container">
                     <label class="read-switch">

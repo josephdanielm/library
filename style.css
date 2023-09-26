@@ -71,38 +71,52 @@ body {
 .wrapper {
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 6rem calc(100vh - 10rem) 4rem;
+    grid-template-rows: 10rem calc(100vh - 14rem) 4rem;
 }
 
 /* Header */
 
 .header {
     grid-row: 1 / 2;
-    background-color: var(--rhino-dark-1);
-    text-align: center;
+    display: grid;
+    align-items: center;
+    grid-template-columns: 7rem auto;
+    background-color: var(--rhino-dark-4);
+    border-bottom: 1px solid var(--rhino-light-3);
     padding: 0.5rem 0 0.5rem 0;
 }
 
+.logo {
+    width: 5rem;
+    margin-left: 2rem;
+    margin-top: 2rem;
+    justify-self: center;
+}
+
 .header h1 {
-    font-size: 4rem;
+    margin-left: 2rem;
+    font-size: 6rem;
     color: var(--reef);
-    font-weight: 500;
+    font-weight: 300;
 }
 
 /* Library */
 
 .library-container {
     grid-row: 2 / 3;
-    margin: 2rem 1rem 1rem 2rem;
+    margin: 2rem 1rem 2rem 1rem;
     display: grid;
     grid-template-columns: 40rem auto;
     column-gap: 1rem;
-    border: 2px solid var(--rhino-light-3);
+    /* border: 2px solid var(--rhino-light-3); */
     border-radius: 0.65rem;
+    background-color: var(--rhino-dark-3);
 }
 
 
 .library-grid {
+    border: 2px solid var(--rhino-light-3);
+    border-radius: 0.65rem;
     display: grid;
     padding: 1rem;
     grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
@@ -115,12 +129,13 @@ body {
 
 /* Cards */
 .card {
-    border: 2px solid var(--reef);
+    border: 1px solid var(--reef);
+    background-color: var(--rhino-dark-3);
     border-radius: 0.65rem;
     height: 30rem;
     display: grid;
     padding: 1rem;
-    grid-template-rows: 9rem 4rem 4rem 1fr 4rem;
+    grid-template-rows: 9rem 4rem 4rem 1fr 2rem 4rem;
 }
 
 .card h1 {
@@ -142,18 +157,27 @@ body {
     align-self: center;
 }
 
-.card p {
+.page-text {
     color: var(--reef);
     font-size: 1.75rem;
     align-self: center;
 }
 
 .card-actions {
-    grid-row: 5 / 6;
+    grid-row: 6 / 7;
     display: grid;
     grid-template-rows: auto;
     grid-template-columns: 6rem 1rem 6rem;
     justify-content: space-between;
+}
+
+.read-text {
+    color: var(--reef);
+    grid-row: 5 / 6;
+    font-size: 1.5rem;
+    font-weight: 700;
+    pointer-events: none;
+    margin-left: 0.8rem;
 }
 
 .delete-button {
@@ -161,6 +185,11 @@ body {
     justify-self: end;
     width: 3.5rem;
     cursor: pointer;
+    transition: 0.2s;
+}
+
+.delete-button:hover {
+    transform: scale(110%);
 }
 
 .switch-container {
@@ -181,6 +210,7 @@ body {
     width: 2em;
     background: var(--reef);
     border-radius: 1em;
+    cursor: pointer;
 }
 
 .read-switch div {
@@ -200,6 +230,11 @@ body {
     -webkit-transform: translate3d(100%, 0, 0);
     -moz-transform: translate3d(100%, 0, 0);
     transform: translate3d(100%, 0, 0);
+}
+
+.read {
+    background-color: var(--rhino-dark-2);
+    box-shadow: inset 0px 0px 230px -4px rgba(196, 253, 184, 0.50);
 }
 
 
@@ -229,10 +264,13 @@ body {
 
 .action-panel {
     padding: 1rem;
+    background-color: var(--rhino-dark-4);
+    border: 2px solid var(--rhino-light-3);
+    border-radius: 0.65rem;
 }
 
 .form-title {
-    font-size: 5rem;
+    font-size: 4rem;
     font-weight: 500;
     color: var(--reef);
     text-align: center;
@@ -257,10 +295,10 @@ form {
 
 input[type='text'],
 input[type='number'] {
-    padding: 1rem;
+    padding: 0.8rem;
     border-radius: 0.65rem;
     border: 1px solid var(--rhino-light-2);
-    background: var(--rhino-dark-3);
+    background: var(--rhino-dark-4);
     width: 32rem;
     outline: none;
     color: white;
@@ -316,21 +354,23 @@ form button {
     width: 16rem;
     height: 4rem;
     font-size: 1.75rem;
-    background-color: var(--rhino-dark-3);
-    color: var(--reef);
+    font-weight: 600;
+    background-color: var(--rhino-dark-2);
+    color: var(--reef-dark-1);
     border: 1px solid var(--reef);
     border-radius: 0.65rem;
 }
 
 form button:hover {
-    background-color: var(--reef);
-    color: var(--rhino-dark-3);
+    background-color: var(--rhino-dark-3);
+    color: var(--reef);
     transition: 0.3s;
 }
 
 form button:active {
     transform: translateY(5px);
     background-color: var(--reef-dark-2);
+    color: var(--rhino);
     transition: 0.05s ease-in-out;
 }
 
@@ -340,7 +380,8 @@ form button:active {
 
 .footer {
     grid-row: 3 / 4;
-    background-color: var(--rhino-dark-1);
+    background-color: var(--rhino-dark-4);
+    border-top: 1px solid var(--rhino-light-3);
     font-size: 2rem;
     text-align: center;
     color: var(--reef);
