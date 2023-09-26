@@ -386,4 +386,77 @@ form button:active {
     text-align: center;
     color: var(--reef);
     padding: 0.5rem;
+    display: grid;
+    grid-template-columns: 15rem 3rem;
+    align-content: center;
+    justify-content: center;
+}
+
+.github-logo {
+    width: 2.25rem;
+    margin-top: 1px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.github-logo:hover {
+    transform: scale(1.2) rotate(360deg);
+}
+
+/* Media Queries */
+
+@media only screen and (max-width: 768px) {
+    .library-container {
+        grid-template-rows: 1fr 1fr;
+        width: 93vw;
+        row-gap: 1rem;
+    }
+
+    .library-grid {
+        width: 95vw;
+        grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
+        gap: 1.8rem
+    }
+
+    .action-panel {
+        grid-row: 2 / 3;
+        width: 95vw;
+    }
+
+    .form-title {
+        font-size: 0;
+    }
+
+    .action-panel * {
+        padding: 0;
+    }
+
+    form>label:nth-child(1) {
+        margin-top: 0;
+    }
+
+    .input-label {
+        font-size: 1.5rem;
+    }
+
+    .card {
+        height: min-content;
+        grid-template-rows: 7rem 3rem 3rem 1fr 2rem 4rem;
+        min-width: 14rem;
+    }
+
+    .card h1 {
+        font-size: 2rem;
+    }
+
+    .card h2 {
+        font-size: 1.25rem;
+    }
+
+    form>label:nth-child(7) {
+        margin-top: 0;
+        font-size: 1.5rem;
+        font-weight: 500;
+    }
+
 }

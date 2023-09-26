@@ -15,23 +15,19 @@ function Book(title, author, pages, haveRead) {
 
 function addBookToLibrary(title, author, pages, haveRead) {
 
-    const newBook = new Book(title, author, pages, haveRead);
+    const isRead = haveRead === 'true';
+
+    const newBook = new Book(title, author, pages, isRead);
 
     myLibrary.push(newBook);
 }
 
 // Test
-addBookToLibrary('The Hobbit', 'J.R.R. Tolkien', 295, false);
-addBookToLibrary('The Catcher in the Rye', 'J.D. Salinger', 224, false);
-addBookToLibrary('To Kill a Mockingbird', 'Harper Lee', 324, true);
-addBookToLibrary('1984', 'George Orwell', 328, false);
-addBookToLibrary('Pride and Prejudice', 'Jane Austen', 432, true);
-addBookToLibrary('The Great Gatsby', 'F. Scott Fitzgerald', 180, false);
-addBookToLibrary('The Lord of the Rings', 'J.R.R. Tolkien', 1216, true);
-addBookToLibrary('Harry Potter and the Sorcerer\'s Stone', 'J.K. Rowling', 336, false);
-addBookToLibrary('Brave New World', 'Aldous Huxley', 311, true);
-addBookToLibrary('The Hunger Games', 'Suzanne Collins', 374, false);
-addBookToLibrary('The Da Vinci Code', 'Dan Brown', 454, true);
+addBookToLibrary('The Hobbit', 'J.R.R. Tolkien', 295, 'false');
+addBookToLibrary('Pride and Prejudice', 'Jane Austen', 432, 'true');
+addBookToLibrary('The Great Gatsby', 'F. Scott Fitzgerald', 180, 'true');
+addBookToLibrary('Harry Potter and the Sorcerer\'s Stone', 'J.K. Rowling', 336, 'true');
+addBookToLibrary('The Hunger Games', 'Suzanne Collins', 374, 'false');
 // Test
 
 const library = document.querySelector('.library-grid');
