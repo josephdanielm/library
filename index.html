@@ -17,24 +17,24 @@
 
         <div class="library-container">
             <div class="action-panel">
+                <h1 class="form-title">Add a Book!</h1>
                 <div class="form-container">
                     <form method="get">
-                        <label for="book-title">Title:</label>
-                        <input type="text" name="book-title" id="book-title">
-                        <br>
-                        <label for="book-author">Author:</label>
-                        <input type="text" name="book-author" id="book-author">
-                        <br>
-                        <label for="book-pages">Pages:</label>
-                        <input type="number" name="book-pages" id="book-pages">
-                        <br>
+                        <label class="input-label" for="book-title">Title</label>
+                        <input type="text" name="book-title" id="book-title" required>
+                        <label class="input-label" for="book-author">Author</label>
+                        <input type="text" name="book-author" id="book-author" required>
+                        <label class="input-label" for="book-pages">Pages</label>
+                        <input type="number" name="book-pages" id="book-pages" required>
                         <label>Have you read this book?</label>
-                        <br>
-                        <input type="radio" name="book-read" id="book-read-yes" value="true">
-                        <label for="book-read-yes">Yes</label><br>
-                        <input type="radio" name="book-read" id="book-read-no" value="false">
-                        <label for="book-read-no">No</label>
-                        <br>
+                        <span class="radio-span">
+                            <input type="radio" name="book-read" id="book-read-yes" value="true" required>
+                            <label for="book-read-yes">Yes</label>
+                        </span>
+                        <span class="radio-span">
+                            <input type="radio" name="book-read" id="book-read-no" value="false" required>
+                            <label for="book-read-no">No</label>
+                        </span>
                         <button type="submit" value="submit">Add Book</button>
                     </form>
                 </div>
