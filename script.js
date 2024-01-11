@@ -1,33 +1,30 @@
 const myLibrary = [];
 
-function Book(title, author, pages, haveRead) {
+class Book {
+    constructor(title, author, pages, haveRead) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.haveRead = Boolean(haveRead);
+    }
 
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.haveRead = Boolean(haveRead);
+    info() {
+        return `${this.title} by ${this.author}, ${this.pages} pages, ${this.haveRead}`;
+    }
 
-    this.info = function () {
-        return `${title} by ${author}, ${pages} pages, ${this.haveRead}`;
+    static addBookToLibrary(title, author, pages, haveRead, library) {
+        const isRead = haveRead === 'true';
+        const newBook = new Book(title, author, pages, isRead);
+        library.push(newBook);
     }
 }
 
-
-function addBookToLibrary(title, author, pages, haveRead) {
-
-    const isRead = haveRead === 'true';
-
-    const newBook = new Book(title, author, pages, isRead);
-
-    myLibrary.push(newBook);
-}
-
 // Test
-addBookToLibrary('The Hobbit', 'J.R.R. Tolkien', 295, 'false');
-addBookToLibrary('Pride and Prejudice', 'Jane Austen', 432, 'true');
-addBookToLibrary('The Great Gatsby', 'F. Scott Fitzgerald', 180, 'true');
-addBookToLibrary('Harry Potter and the Sorcerer\'s Stone', 'J.K. Rowling', 336, 'true');
-addBookToLibrary('The Hunger Games', 'Suzanne Collins', 374, 'false');
+Book.addBookToLibrary('The Hobbit', 'J.R.R. Tolkien', 295, 'false', myLibrary);
+Book.addBookToLibrary('Pride and Prejudice', 'Jane Austen', 432, 'true', myLibrary);
+Book.addBookToLibrary('The Great Gatsby', 'F. Scott Fitzgerald', 180, 'true', myLibrary);
+Book.addBookToLibrary('Harry Potter and the Sorcerer\'s Stone', 'J.K. Rowling', 336, 'true', myLibrary);
+Book.addBookToLibrary('The Hunger Games', 'Suzanne Collins', 374, 'false', myLibrary);
 // Test
 
 const library = document.querySelector('.library-grid');
