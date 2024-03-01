@@ -10,6 +10,10 @@ class Book {
         return `${this.title} by ${this.author}, ${this.pages} pages, ${this.haveRead}`;
     }
 
+    getPages() {
+        return this.pages;
+    }
+
     static addBookToLibrary(title, author, pages, haveRead, library) {
         const isRead = haveRead === 'true';
         const newBook = new Book(title, author, pages, isRead);
@@ -18,9 +22,32 @@ class Book {
 
     toggleReadStatus() {
         this.haveRead = !this.haveRead;
+
+        if (this.haveRead) {
+            addPages(this.getPages());
+        } else {
+            removePages(this.getPages());
+        }
     }
 }
 
+let totalPages = 0;
+const pageCount = document.getElementById('page-counter-number');
+
+
+function addPages(numPages) {
+    totalPages = +totalPages + +numPages;
+    pageCount.innerText = +totalPages;
+}
+
+function removePages(numPages) {
+    totalPages = +totalPages - +numPages;
+    pageCount.innerText = +totalPages;
+}
+
+function getTotalPages() {
+    return +totalPages;
+}
 
 
 class Library {
@@ -31,12 +58,22 @@ class Library {
     addBook(title, author, pages, haveRead) {
         const newBook = new Book(title, author, pages, haveRead);
         this.books.push(newBook);
+        if (newBook.haveRead) {
+            addPages(pages);
+        }
+        console.log(getTotalPages());
     }
 
     removeBook(index) {
+        let numPagesOfRemovedBook = +(this.books[index]).getPages();
+        if (this.haveRead) {
+            removePages(numPagesOfRemovedBook);
+        }
         this.books.splice(index, 1);
+        console.log(getTotalPages());
     }
 }
+
 
 const library = document.querySelector('.library-grid');
 const myLibrary = new Library();
@@ -71,6 +108,7 @@ function displayBooks() {
                 </span>
             </div>
         `;
+
         library.appendChild(bookElement);
     });
 }
